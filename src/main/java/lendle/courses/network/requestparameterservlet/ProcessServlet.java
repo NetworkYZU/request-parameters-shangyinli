@@ -30,7 +30,7 @@ public class ProcessServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -48,6 +48,14 @@ public class ProcessServlet extends HttpServlet {
                 out.print(name+"=");
                 out.println(request.getParameter(name)+"<br/>");
                 //http://localhost:8080/request-parameters-shangyinli/process?username=shangyinli&abc123=123 //?分割前面是網址後面參數
+            }
+            String [] group1Values=request.getParameterValues("group1");
+            for(int i=0;i<group1Values.length;i++){
+                out.println(""+i+"="+group1Values[i]+"<br/>");
+            }
+            String [] group1Values1=request.getParameterValues("group2");
+            for(int i=0;i<group1Values1.length;i++){
+                out.println(""+i+"="+group1Values1[i]+"<br/>");
             }
             out.println("</body>");
             out.println("</html>");
